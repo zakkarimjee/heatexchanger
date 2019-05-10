@@ -1,0 +1,23 @@
+%% Inputs
+
+L = 0.3; %lengthof pipes m, less than 0.3
+NoT = 13; %number of tubes
+
+A_tubes = NoT*pi*(di^2)/4;
+
+
+%% Calculations
+
+mh = 0.5; % guess at mass flow rate
+q = mh/rho; % volumetric flow rate
+
+%Find velocity 
+
+V_tube = (mh/rho)/A_tubes; %TODO check rho
+
+%Pressure drop along tubes
+
+
+
+dp_tube = 
+
