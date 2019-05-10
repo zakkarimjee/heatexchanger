@@ -1,8 +1,11 @@
-
+Need to run init.m before anything else to load relevant data
 
 ==General Structure==
 
--Hot & Cold flow functions that
+
+
+- Hot & Cold flow functions that give a mass flow rate and characteristic velocities for the hot and cold side
+- Thermal design functions that give an effectiveness for a given design, with characteristic velocities provided by previous functions
 
 
 ==Supporting Functions==
