@@ -1,7 +1,10 @@
+function [dp_hot Re_hot] = dp_hx_hot(mh, L, NoT)
+globals
+
 %% Inputs
 
-L = 0.3; %lengthof pipes m, less than 0.3
-NoT = 13; %number of tubes
+% L = 0.3; %lengthof pipes m, less than 0.3
+% NoT = 6; %number of tubes
 
 A_tubes = NoT*pi*(di^2)/4;
 A_shell = 0.25*pi*Dsh^2;
@@ -32,4 +35,7 @@ dp_ends = 0.5*rho*(V_tube^2)*(Kc+Ke);
 V_nozzle = q/(0.25*pi*dnozzle^2);
 dp_nozzle = 0.5*rho*V_nozzle^2;
 
-dp_hot = dp_tube + dp_ends + dp_nozzle
+dp_hot = dp_tube + dp_ends + dp_nozzle;
+
+end
+

@@ -13,7 +13,7 @@ headerlinesIn = 3;
 global pump_hot_data
 pump_hot_data = importdata(filename, delimiterIn, headerlinesIn);
 pump_hot_data = pump_hot_data.data;
-
+globals
 
 Dsh = 0.064; %fixed
 d0 = 0.008; %fixed
