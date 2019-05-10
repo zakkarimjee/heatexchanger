@@ -1,4 +1,5 @@
-%% Inputs
+init
+
 Y = 0.014; %variable
 
 L = 0.35; %varaible needs to be blow 0.3 
@@ -20,7 +21,13 @@ Resh = Vsh*d0*rho/mu;
 
 Psh = 4*a*Resh^-0.15*NoT*rho*Vsh^2;
 
-Vnozzle = mc/(rho*pi*d
+Vnozzle = mc/(rho*pi*dnozzle^2/4);
+
+Pnozzle = rho*Vnozzle^2; 
+
+PshTOT = Psh + Pnozzle;
+
+dp = dp_pump_cold(mc);
 
 
 
