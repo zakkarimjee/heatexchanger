@@ -13,3 +13,13 @@ headerlinesIn = 3;
 global pump_hot_data
 pump_hot_data = importdata(filename, delimiterIn, headerlinesIn);
 pump_hot_data = pump_hot_data.data;
+
+
+Dsh = 0.064; %fixed
+d0 = 0.08; %fixed
+di = 0.06;
+dnozzle = 0.02; 
+
+% Properties 
+rho = 990.1; %fixed
+mu = 6.51e-04; %fixed
