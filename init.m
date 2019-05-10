@@ -16,8 +16,8 @@ pump_hot_data = pump_hot_data.data;
 
 
 Dsh = 0.064; %fixed
-d0 = 0.08; %fixed
-di = 0.06;
+d0 = 0.008; %fixed
+di = 0.006;
 dnozzle = 0.02; 
 
 % Properties 
