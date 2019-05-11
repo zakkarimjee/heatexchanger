@@ -30,5 +30,5 @@ eqns = [mh*cp*(ThIn - ThOut)==Q, mc*cp*(TcOut-TcIn)==Q, Q==U*A*(((ThIn-TcOut)-(T
 vars = [Q,ThOut,TcOut];
 [SolQ, SolThOut, SolTcOut] = vpasolve(eqns,vars)
 
-Eff = SolQ/(min(mh,mc)*cp*(ThIn-TcIn))
+Qmax = SolQ/(min(
 

@@ -1,4 +1,4 @@
-function [dp_cold Re_cold] = dp_hx_cold(mc, L, NoT, NoB, Y, a);
+function [dp_cold, Re_cold] = dp_hx_cold(mc, L, NoT, NoB, Y, a)
 % Y = 0.014; %variable
 % 
 % L = 0.35; %varaible needs to be blow 0.3 
@@ -13,14 +13,13 @@ globals
 
 %% Calc
 
+% mu = 6.51e-04;
 B = L/(NoB+1); 
 Ash = Dsh*(Y-d0)*B/Y;
 
-mc = 0.5; %guess
-
 Vsh = mc/(rho*Ash);
 
-Resh = Vsh*d0*rho/mu; 
+Resh = Vsh*d0*rho/visc; 
 
 Psh = 4*a*Resh^-0.15*NoT*rho*Vsh^2;
 
@@ -32,7 +31,7 @@ PshTOT = Psh + Pnozzle;
 
 dp_cold = PshTOT;
 
-Re_cold = rho*Vsh*d0/mu;
+Re_cold = rho*Vsh*d0/visc;
 
 end
 

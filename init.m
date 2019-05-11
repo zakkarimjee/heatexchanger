@@ -1,3 +1,5 @@
+global Dsh d0 di dnozzle rho mu visc cp ThIn TcIn Pr K Ktube
+
 %import cold pump data
 filename = 'data/pump_cold.txt';
 delimiterIn = ' ';
@@ -13,7 +15,6 @@ headerlinesIn = 3;
 global pump_hot_data
 pump_hot_data = importdata(filename, delimiterIn, headerlinesIn);
 pump_hot_data = pump_hot_data.data;
-globals
 
 Dsh = 0.064; %fixed
 d0 = 0.008; %fixed
@@ -23,3 +24,13 @@ dnozzle = 0.02;
 % Properties 
 rho = 990.1; %fixed
 mu = 6.51e-04; %fixed
+visc = 6.51e-04; %fixed
+cp = 4179;
+Pr = 4.31;
+K = 0.632;
+Ktube = 386;
+
+ThIn = 60;
+TcIn = 20;
+
+

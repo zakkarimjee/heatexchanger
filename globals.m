@@ -4,4 +4,5 @@ global di;
 global dnozzle;
 
 global rho;
-global mu;
+global mu visc;
+global cp;

@@ -1,21 +1,6 @@
-init 
+function [SolQ, SolThOut, SolTcOut, Eff] = thermal(mh,mc,Re_hot,Resh,L,NoT,
 
-% di = 0.006;
-% d0 = 0.008;
-L = 0.35;
-NoT = 13;
-
-TcIn = 20;
-ThIn = 60;
-mc = 0.5;
-mh = 0.48;
-cp = 4179;
-Pr = 4.31;
-K = 0.632;
-Ktube = 386;
-
-Resh = 6400;
-Re_hot = 12036;
+global d0 di ThIn TcIn cp 
 
 Nui = 0.023*Re_hot^0.8*Pr^0.3;
 hi = Nui*K/di;
@@ -31,4 +16,3 @@ vars = [Q,ThOut,TcOut];
 [SolQ, SolThOut, SolTcOut] = vpasolve(eqns,vars)
 
 Eff = SolQ/(min(mh,mc)*cp*(ThIn-TcIn))
-

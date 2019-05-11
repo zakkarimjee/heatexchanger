@@ -1,8 +1,9 @@
+clear
 init
 
 Y = 0.014; %variable
 
-L = 0.3; %varaible needs to be blow 0.3 
+L = 0.35; %varaible needs to be below 0.3 
 NoB = 9; %variable number of baffles
 NoT = 13; %varaible number of tubes
 
@@ -17,7 +18,7 @@ mc = 0.5; %guess
 
 Vsh = mc/(rho*Ash);
 
-Resh = Vsh*d0*rho/mu; 
+Resh = Vsh*d0*rho/visc; 
 
 Psh = 4*a*Resh^-0.15*NoT*rho*Vsh^2;
 
@@ -27,7 +28,7 @@ Pnozzle = rho*Vnozzle^2;
 
 PshTOT = Psh + Pnozzle
 
-dp = dp_pump_cold(mc);
+dp = dp_pump_cold(mc)
 
 
 
