@@ -1,3 +1,5 @@
+clear 
+
 Y = 0.014; %variable
 
 L = 0.35; %varaible needs to be below 0.3 
