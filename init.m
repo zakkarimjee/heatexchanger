@@ -34,4 +34,8 @@ c = 0.15; %for square and 0.2 for triangular
 ThIn = 60;
 TcIn = 20;
 
+%limits of hot and cold pump data
+
+interval_pump_hot = [0.0696 0.5380];
+interval_pump_cold = [0.1710 0.6915];
 
