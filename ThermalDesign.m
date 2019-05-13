@@ -13,13 +13,14 @@ cp = 4179;
 Pr = 4.31;
 K = 0.632;
 Ktube = 386;
+c = 0.15; % for square pitch 
 
 Resh = 6400;
 Re_hot = 12036;
 
 Nui = 0.023*Re_hot^0.8*Pr^0.3;
 hi = Nui*K/di;
-Nu0 = 0.023*Resh^0.8*Pr^0.3;
+Nu0 = c*Resh^0.6*Pr^0.3;
 h0 = Nu0*K/d0;
 U = (1/hi + di*log(d0/di)/(2*Ktube) + di/(d0*h0))^-1;
 A = pi*di*L*NoT;

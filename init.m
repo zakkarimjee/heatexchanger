@@ -1,4 +1,4 @@
-global Dsh d0 di dnozzle rho mu visc cp ThIn TcIn Pr K Ktube
+global Dsh d0 di dnozzle rho mu visc cp ThIn TcIn Pr K Ktube c
 
 %import cold pump data
 filename = 'data/pump_cold.txt';
@@ -29,6 +29,7 @@ cp = 4179;
 Pr = 4.31;
 K = 0.632;
 Ktube = 386;
+c = 0.15; %for square and 0.2 for triangular 
 
 ThIn = 60;
 TcIn = 20;
