@@ -1,5 +1,5 @@
 function d = dp_diff_cold(mc)
-global Dsh d0 rho visc dnozzle
+global Dsh d0 rho visc dnozzle;
 
 global L NoT NoB Y a
 

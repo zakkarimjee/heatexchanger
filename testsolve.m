@@ -3,12 +3,14 @@ clear
 init
 global L NoT NoB Y a
 
-
-L = 0.3; %m length
+L = 0.35; %m length
 NoT = 4; %tubes
-NoB = 40; %baffles
+NoB = 14; %baffles
 Y = 0.014; %m pitch
 a = 0.34; %square pitch, 0.2 for triangular
+
+
+
 mcs = [];
 mhs = [];
 NoBl = [40 45 50 55 60]

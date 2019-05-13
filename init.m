@@ -31,8 +31,8 @@ K = 0.632;
 Ktube = 386;
 c = 0.15; %for square and 0.2 for triangular 
 
-ThIn = 60;
-TcIn = 20;
+ThIn = 53.2;
+TcIn = 13.8;
 
 %limits of hot and cold pump data
 

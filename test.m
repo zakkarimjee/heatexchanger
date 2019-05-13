@@ -7,3 +7,4 @@ Y = 0.014; %m pitch
 a = 0.2; %square pitch, 0.2 for triangular
 
 
+for m
