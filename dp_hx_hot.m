@@ -1,5 +1,5 @@
 function [dp_hot Re_hot] = dp_hx_hot(mh, L, NoT)
-globals
+global Dsh d0 rho visc dnozzle di
 
 %% Inputs
 
@@ -12,13 +12,12 @@ A_shell = 0.25*pi*Dsh^2;
 
 %% Calculations
 
-mh = 0.52; % guess at mass flow rate
 q = mh/rho; % volumetric flow rate
 
 %Find velocity 
 
 V_tube = q/A_tubes; %TODO check rho
-Re_tube = rho*V_tube*di/mu; %TODO check mu
+Re_tube = rho*V_tube*di/visc; %TODO check mu
 
 %Pressure drop along tubes
 f_factor = (1.82*log10(Re_tube) - 1.64)^(-2);
@@ -37,5 +36,6 @@ dp_nozzle = 0.5*rho*V_nozzle^2;
 
 dp_hot = dp_tube + dp_ends + dp_nozzle;
 
+Re_hot = Re_tube;
 end
 
