@@ -1,6 +1,6 @@
 clear
 init
-global L NoT NoB Y 
+global L NoT NoB Y a
 L = 0.35; %m length
 NoT = 13; %tubes
 NoB = 14; %baffles
