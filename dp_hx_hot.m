@@ -1,16 +1,9 @@
-function [dp_hot Re_hot] = dp_hx_hot(mh, L, NoT)
-global Dsh d0 rho visc dnozzle di
+function [dp_hot, Re_hot] = dp_hx_hot(mh, L, NoT)
 
-%% Inputs
-
-% L = 0.3; %lengthof pipes m, less than 0.3
-% NoT = 6; %number of tubes
+global Dsh rho visc dnozzle di
 
 A_tubes = NoT*pi*(di^2)/4;
 A_shell = 0.25*pi*Dsh^2;
-
-
-%% Calculations
 
 q = mh/rho; % volumetric flow rate
 
@@ -32,7 +25,7 @@ dp_ends = 0.5*rho*(V_tube^2)*(Kc+Ke);
 
 %nozzle pressure drop - assume loss of all dynamic pressure
 V_nozzle = q/(0.25*pi*dnozzle^2);
-dp_nozzle = 0.5*rho*V_nozzle^2;
+dp_nozzle = rho*V_nozzle^2;
 
 dp_hot = dp_tube + dp_ends + dp_nozzle;
 

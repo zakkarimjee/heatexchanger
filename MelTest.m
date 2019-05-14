@@ -8,10 +8,20 @@ NoT = 13; %varaible number of tubes
 
 a = 0.34; %for square (0.2 for triangular)
 
-[dp_cold, Re_cold] = dp_hx_cold2(0.5, L, NoT, NoB, Y, a)
-
 mh = 0.45;
 mc = 0.5;
-Re_hot = 12036;
+
+[dp_hot, Re_hot] = dp_hx_hot(0.48, L, NoT)
+[dp_cold, Re_cold] = dp_hx_cold(0.5, L, NoT, NoB, Y, a)
 
 [SolQ, SolThOut, SolTcOut, Eff] = thermal(mh,mc,Re_hot,Re_cold,L,NoT)
+
+dp_hot_pump = dp_pump_hot(mh)
+dp_cold_pump = dp_pump_cold(mc)
+
+d = dp_diff_hot(0.5)
+
+% syms Mc Dp
+% 
+% eqns = [Dp==dp_pump_cold(Mc), Dp == dp_hx_cold(Mc, L, NoT, NoB, Y, a)];
+% [SolMc, SolDp] = fsolve(eqns,vars)
