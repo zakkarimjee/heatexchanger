@@ -1,7 +1,7 @@
 clear
 init
 global L NoT NoB Y 
-L = 0.35; %m length
+L = 0.2; %m length
 NoT = 13; %tubes
 NoB = 14; %baffles
 % Y = 0.0156; %m pitch
@@ -26,7 +26,13 @@ mh = fzero(@dp_diff_hot,[0.1 0.9]);
 
 [dp_hot, Re_hot] = dp_hx_hot(mh,L,NoT);
 [dp_cold, Re_cold] = dp_hx_cold(mc,L,NoT,NoB,Y,a);
-
-[Q, ThOut, TcOut, Eff] = thermal(mh,mc,Re_hot,Re_cold,L,NoT)
-
+[valid, mass] = constraint(L,NoT,NoB,Y);
+disp(strcat("Design has mass ",num2str(mass)," kg"));
+if valid
+else
+    disp("Design does not meet constraints");
+end
+[Q, ThOut, TcOut, Eff] = thermal(mh,mc,Re_hot,Re_cold,L,NoT);
+disp(strcat("ThOut (C) ",num2str(ThOut),"  ThIn (C) ",num2str(ThIn)));
+disp(strcat("Effectiveness ",num2str(Eff)));
 
