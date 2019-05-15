@@ -3,13 +3,13 @@ function [dp_cold, Re_cold] = dp_hx_cold(mc, L, NoT, NoB, Y, a)
 global Dsh d0 rho visc dnozzle
 
 B = L/(NoB+1);
-Ash = Dsh*(Y-d0)*B/Y;
+Ash = Dsh*(Y-d0)*B/Y; %divide by n 
 
 Vsh = mc/(rho*Ash);
 
 Resh = Vsh*d0*rho/visc; 
 
-Psh = 4*a*Resh^-0.15*NoT*rho*Vsh^2;
+Psh = 4*a*Resh^-0.15*NoT*rho*Vsh^2; % same divide by n multiply by n 
 
 Vnozzle = mc/(rho*pi*dnozzle^2/4);
 

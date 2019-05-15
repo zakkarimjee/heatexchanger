@@ -21,7 +21,7 @@ mh = fzero(@dp_diff_hot,[0.1 0.9]);
 [dp_cold, Re_cold] = dp_hx_cold(mc,L,NoT,NoB,Y,a);
 
 [Q, ThOut, TcOut, Eff] = thermal(mh,mc,Re_hot,Re_cold,L,NoT);
-[Q, ThOut, TcOut, Eff, R, P, F] = thermal2(mh,mc,Re_hot,Re_cold,L,NoT);
+[Q, ThOut, TcOut, Eff, R, P, F] = thermal2(mh,mc,Re_hot,Re_cold,L,NoT)
 
 
 
