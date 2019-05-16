@@ -9,6 +9,8 @@ h0 = Nu0*K/d0;
 U = (1/hi + di*log(d0/di)/(2*Ktube) + di/(d0*h0))^-1;
 A = pi*di*L*NoT;
 
+
+
 if n_tube > 1
     
     syms Q ThOut TcOut R P F
@@ -27,8 +29,9 @@ else
     eqns = [mh*cp*(ThIn - ThOut)==Q, mc*cp*(TcOut-TcIn)==Q, Q==U*A*(((ThIn-TcOut)-(ThOut-TcIn))/log((ThIn-TcOut)/(ThOut-TcIn)))];
     vars = [Q,ThOut,TcOut];
     [SolQ, SolThOut, SolTcOut] = vpasolve(eqns,vars);
-    SolR = 0; SolP = 0; SolF = 1;
+    huio = 1
 end
+
 
 Eff = SolQ/(min(mh,mc)*cp*(ThIn-TcIn));
 
