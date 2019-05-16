@@ -1,4 +1,4 @@
-function [Q, ThOut, TcOut, Eff] = entu(mh,mc,Re_hot,Re_cold,L,NoT)
+function [Q, ThOut, TcOut, Eff] = entu(mh,mc,Re_hot,Re_cold,L,NoT,n_shell,n_tube)
 
 global d0 di ThIn TcIn cp Pr K Ktube c
 
@@ -14,8 +14,12 @@ NTU = U*A/(cp*min([mh mc]));
 Rc = min([mh mc])/max([mh mc]);
 
 %counterflow
-Eff = (1 - exp(-NTU*(1 - Rc)))/(1 - Rc*exp(-NTU*(1 - Rc)));
-
+if n_shell == 1
+    if n_tube == 1
+        Eff = (1 - exp(-NTU*(1 - Rc)))/(1 - Rc*exp(-NTU*(1 - Rc)));
+    end
+    if mod(n_tube,2) == 0
+        Eff = 
 Q_max = min([mc mh])*cp*(ThIn - TcIn);
 Q = Eff*Q_max;
 
