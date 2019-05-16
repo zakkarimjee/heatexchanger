@@ -7,19 +7,21 @@ NoB = 14; %baffles
 % Y = 0.0156; %m pitch
 Y = 0.012; %m pitch
 a = 0.34; %square pitch, 0.2 for triangular
-n = 20;
-mcs = linspace(0.1,1,n);
-dpc = zeros(size(mcs));
-dph = zeros(size(mcs));
-
-for i = 1:n
-    dph(i) = dp_diff_hot(mcs(i));
-    dpc(i) = dp_diff_cold(mcs(i));
-end
-hold on
-plot(mcs,dph,'r');
-plot(mcs,dpc,'b');
-hold off 
+n_tube = 1;
+n_shell = 1;
+% n = 20;
+% mcs = linspace(0.1,1,n);
+% dpc = zeros(size(mcs));
+% dph = zeros(size(mcs));
+% 
+% for i = 1:n
+%     dph(i) = dp_diff_hot(mcs(i));
+%     dpc(i) = dp_diff_cold(mcs(i));
+% end
+% hold on
+% plot(mcs,dph,'r');
+% plot(mcs,dpc,'b');
+% hold off 
 
 mc = fzero(@dp_diff_cold,[0.1 0.9]);
 mh = fzero(@dp_diff_hot,[0.1 0.9]);

@@ -62,10 +62,7 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     end
     
     if n_shell>1
-        if mod(n_tube,n_shell) ~= 2
-            return
-        end
-    end
+        if n_tube ~= 
     
     
     

@@ -1,4 +1,4 @@
-function [dp_hot, Re_hot] = dp_hx_hot(mh, L, NoT)
+function [dp_hot, Re_hot] = dp_hx_hot(mh, L, NoT,n_tube)
 
 global Dsh rho visc dnozzle di
 
