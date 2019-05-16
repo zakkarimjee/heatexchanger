@@ -33,5 +33,14 @@ else
     disp("Design does not meet constraints");
 end
 [Q, ThOut, TcOut, Eff] = thermal(mh,mc,Re_hot,Re_cold,L,NoT);
+[Qe, ThOute, TcOute, Effe] = entu(mh,mc,Re_hot,Re_cold,L,NoT, 1,2);
+Q
+Qe
+ThOut
+ThOute
+TcOut
+TcOute
+Eff
+Effe
 
 
