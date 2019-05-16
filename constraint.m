@@ -56,6 +56,11 @@ function [valid, m] = constraint(L,NoT,NoB,Y)
         return
     end
     
+    if Y<=d0
+        disp("Tubes interfere");
+        return
+    end
+    
     %add a safety factor of 5% for sealant and inaccuracy etc.
     m_max = 1.2/1.05;
     if m > m_max 

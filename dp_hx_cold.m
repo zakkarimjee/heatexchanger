@@ -1,9 +1,9 @@
-function [dp_cold, Re_cold] = dp_hx_cold(mc, L, NoT, NoB, Y, a)
+function [dp_cold, Re_cold] = dp_hx_cold(mc, L, NoT, NoB, Y, a, n_shell, n_tube)
 
 global Dsh d0 rho visc dnozzle
 
 B = L/(NoB+1);
-Ash = Dsh*(Y-d0)*B/Y; %divide by n 
+Ash = Dsh*(Y-d0)*B/Y*1/n_shell; %divide by n 
 
 Vsh = mc/(rho*Ash);
 
