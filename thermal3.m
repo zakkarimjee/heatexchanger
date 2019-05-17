@@ -29,7 +29,6 @@ else
     [SolQ, SolThOut, SolTcOut] = vpasolve(eqns,vars);
     SolR = 0; SolP = 0; SolF = 1;
 end
-SolF
 Eff = SolQ/(min(mh,mc)*cp*(ThIn-TcIn));
 
 end

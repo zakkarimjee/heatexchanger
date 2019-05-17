@@ -1,0 +1,25 @@
+clear 
+close all 
+
+Lrange = linspace(0.2, 0.3, 10);
+NoT = 10;
+NoB = 20;
+Y = 0.014;
+a = 0.34;
+n_shell = 1;
+n_tube = 1;
+
+Eff_L = []
+    
+for L = Lrange 
+
+    design = [L,NoT,NoB,Y,a,n_shell,n_tube];
+    Eff_L = [Eff_L; design, solveDesign(design)];
+    
+end
+
+[Eff_L_max] = max(Eff_L);
+Eff_L_max
+Corress_L = L(Ind)
+
+

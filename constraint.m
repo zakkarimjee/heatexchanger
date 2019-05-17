@@ -74,9 +74,8 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     if m > m_max 
         disp("Mass too large");
         return
-    else
-        valid = 1;
     end
+    valid = 1;
 end
 
 
