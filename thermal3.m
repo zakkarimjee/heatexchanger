@@ -1,6 +1,6 @@
-function [SolQ, SolThOut, SolTcOut, Eff, SolR, SolP, SolF] = thermal3(mh,mc,Re_hot,Re_cold,L,NoT,n_shell,n_tube)
+function [SolQ, SolThOut, SolTcOut, Eff, SolR, SolP, SolF] = thermal3(mh,mc,Re_hot,Re_cold,L,NoT,c,n_shell,n_tube)
 
-global d0 di ThIn TcIn cp Pr K Ktube c 
+global d0 di ThIn TcIn cp Pr K Ktube 
 
 Nui = 0.023*Re_hot^0.8*Pr^0.3;
 hi = Nui*K/di;

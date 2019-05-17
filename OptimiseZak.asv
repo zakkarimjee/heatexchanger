@@ -1,25 +1,35 @@
 clear 
 close all 
 
-Lrange = linspace(0.2, 0.3, 10);
-NoT = 10;
-NoB = 20;
+Lrange = linspace(0.1, 0.25, 10);
+NoTrange = 5:3:15;
+NoBrange = 5:2:20;
 Y = 0.014;
 a = 0.34;
-n_shell = 1;
-n_tube = 1;
+n_shell_range = [1 2];
+n_tube_range = [1 2];
 
-Eff_L = []
-    
-for L = Lrange 
-
-    design = [L,NoT,NoB,Y,a,n_shell,n_tube];
-    Eff_L = [Eff_L; design, solveDesign(design)];
-    
+Eff_L = [];
+for n_shell = n_shell_range
+    for n_tube = n_tube_range
+   
+        for L = Lrange
+            disp(L);
+            for NoT = NoTrange
+                for NoB = NoBrange
+                design = [L,NoT,NoB,Y,a,n_shell,n_tube];
+                [eff, val, mass] = solveDesign(design);
+                    if val
+                        Eff_L = [Eff_L; design, eff];
+                        disp([eff design mass]
+                    end
+                end
+            end
+        end
+    end
 end
 
-[Eff_L_max] = max(Eff_L);
-Eff_L_max
-Corress_L = L(Ind)
+Eff_L_max = max(Eff_L);
+
 
 

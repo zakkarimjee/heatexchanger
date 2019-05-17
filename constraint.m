@@ -1,4 +1,4 @@
-function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
+function [valid, m] = constraint(L,NoT,NoB,Y,a,n_shell,n_tube)
     %% our constrains are mass under 1.2kg and length under 0.3m
     %also no more than 6m of tube
     %no more than 500mm of pipe
@@ -13,6 +13,8 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     d_plate = 6.375; %kg/m2
     d_baff = 2.39; %kg/m2
     
+    L_ends = 0.048;
+    
     %size calcs
     A_plate = pi*(Dsh^2)*0.25; %also the inside area of the shell
     L_tube = NoT*L; %total length of copper tube
@@ -22,9 +24,11 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
 
     m = 0;
     %pipe mass
-    m = m + L*d_pipe;
+    m = m + (L+0.003)*d_pipe;
+    %pipe end mass
+    m = m + L_ends*2*d_pipe;
     %tube mass
-    m = m + L_tube*d_tube;
+    m = m + (L_tube+0.012)*d_tube;
     %baffle mass (Assume 0.8*pipe area, neglect tube hole area)
     A_baff = 0.8*pi*(Dsh^2)*0.25;
     m_baff = A_baff*d_baff;
@@ -37,7 +41,7 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     %% Length constraints
     %overall length - don't need to check pipe length as this is extra to
     %overall length
-    if L > 0.3
+    if L > 0.3-2*L_ends
         disp("Too long");
         return
     end
@@ -50,10 +54,20 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     %%check given number of tubes with given pitch will actually fit!
     % a rough calculation assuming each tube takes up an area of effective
     % radius pitch/2
-    A_tube_p = 0.25*pi*Y^2;
-    if NoT*A_tube_p > A_plate
-        disp("Tubes won't fit!");
-        return
+    if a == 0.34
+        %square pitch
+        A_tube_p = Y^2;
+        if NoT*A_tube_p > 0.9*A_plate
+            disp("Tubes won't fit!");
+            return
+        end
+    elseif a == 0.2
+        %triangularpitch
+        A_tube_p = 0.866*Y^2;
+        if NoT*A_tube_p > 0.90*A_plate
+            disp("Tubes won't fit!");
+            return
+        end
     end
     
     if Y<=d0
@@ -62,7 +76,8 @@ function [valid, m] = constraint(L,NoT,NoB,Y,n_shell,n_tube)
     end
     
     if n_shell>1
-        if mod(n_tube,n_shell) ~= 2
+        if mod(n_tube,n_shell) ~= 0
+            disp("invalid multipass configuration");
             return
         end
     end
