@@ -31,4 +31,9 @@ else
 end
 Eff = SolQ/(min(mh,mc)*cp*(ThIn-TcIn));
 
+ComplexCheck = isreal(SolF);
+
+if ComplexCheck == 0
+    disp('Complex F value')
+end 
 end
