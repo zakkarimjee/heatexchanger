@@ -1,4 +1,4 @@
-function [Eff, valid, mass] = solveDesign(design)
+function [Q, Eff, valid, mass] = solveDesign(design)
     %definition of input vector
     L = design(1);
     NoT = design(2);
