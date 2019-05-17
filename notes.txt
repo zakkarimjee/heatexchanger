@@ -1,11 +1,7 @@
-Need to run init.m before anything else to load relevant data
+ Columns 1 through 6
 
-==General Structure==
+   0.187500000000000  19.000000000000000  17.000000000000000   0.010000000000000   0.200000000000000   2.000000000000000
 
+  Columns 7 through 9
 
-
-- Hot & Cold flow functions that give a mass flow rate and characteristic velocities for the hot and cold side
-- Thermal design functions that give an effectiveness for a given design, with characteristic velocities provided by previous functions
-
-
-==Supporting Functions==
+   4.000000000000000  15.856341609450896   0.266074412150472

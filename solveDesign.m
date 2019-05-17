@@ -34,7 +34,7 @@ function [Q, Eff, valid, mass] = solveDesign(design)
 
     [dp_hot, Re_hot] = dp_hx_hot(mh,L,NoT,n_tube);
     [dp_cold, Re_cold] = dp_hx_cold(mc,L,NoT,NoB,Y,a,n_shell,n_tube);
-    [Q, ThOut, TcOut, Eff] = thermal3(mh,mc,Re_hot,Re_cold,L,NoT,c,n_shell,n_tube);
+    [Q, ThOut, TcOut, Eff] = entu(mh,mc,Re_hot,Re_cold,L,NoT,c,n_shell,n_tube);
     
 end
 

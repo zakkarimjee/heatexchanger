@@ -1,6 +1,6 @@
-function [Q, ThOut, TcOut, Eff] = entu(mh,mc,Re_hot,Re_cold,L,NoT,n_shell,n_tube)
+function [Q, ThOut, TcOut, Eff] = entu(mh,mc,Re_hot,Re_cold,L,NoT,c,n_shell,n_tube)
 
-global d0 di ThIn TcIn cp Pr K Ktube c
+global d0 di ThIn TcIn cp Pr K Ktube
 
 Nui = 0.023*Re_hot^0.8*Pr^0.3;
 hi = Nui*K/di;
@@ -18,7 +18,7 @@ Rc = min([mh mc])/max([mh mc]);
 %equations from https://books.google.co.uk/books?id=YBaNaLurTD4C&lpg=RA1-PA691&ots=tPREepqKcC&dq=shell%20and%20tube%2011.30b&pg=PA691#v=onepage&q&f=false
 %Introduction to Heat Transfer (Bergman, Incropera) pg724
 
-if (mod(n_tube/n_shell,2)~= 0) && (n_tube ~= 1) && (n_shell ~= 1)
+if (mod(n_tube,n_shell)~= 0) && (n_tube ~= 1) && (n_shell ~= 1)
    Eff = 0;
    error("Invalid pass numbers");
 end
@@ -26,7 +26,7 @@ end
 if n_shell == 1
     if n_tube == 1
         Eff = (1 - exp(-NTU*(1 - Rc)))/(1 - Rc*exp(-NTU*(1 - Rc)));
-        disp("Single pass");
+        %disp("Single pass");
     end
 end
 if mod(n_tube,2) == 0
@@ -36,10 +36,10 @@ if mod(n_tube,2) == 0
     if n_shell>1
         J = (1-Eff1*Rc)/(1-Eff1);
         Eff = (J^n_shell - 1)/(J^n_shell - Rc);
-        disp("Multi tube and shell pass");
+        %disp("Multi tube and shell pass");
     else
         Eff = Eff1;
-        disp("Single shell, multi tube pass");
+        %disp("Single shell, multi tube pass");
     end
 end
 Q_max = min([mc mh])*cp*(ThIn - TcIn);

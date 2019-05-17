@@ -85,7 +85,7 @@ function [valid, m] = constraint(L,NoT,NoB,Y,a,n_shell,n_tube)
     
     
     %add a safety factor of 5% for sealant and inaccuracy etc.
-    m_max = 1.2/1.05;
+    m_max = 1.1;
     if m > m_max 
         disp("Mass too large");
         return

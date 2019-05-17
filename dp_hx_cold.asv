@@ -9,7 +9,7 @@ Vsh = mc/(rho*Ash);
 
 Resh = Vsh*d0*rho/visc; 
 
-Psh = (4*a*Resh^-0.15*NoT*rho*Vsh^2)/n_shell; % same divide by n multiply by n 
+Psh = (4*a*Resh^-0.15*NoT*rho*Vsh^2); % same divide by n multiply by n 
 
 Vnozzle = mc/(rho*pi*dnozzle^2/4);
 
