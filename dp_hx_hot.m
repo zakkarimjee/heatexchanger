@@ -2,7 +2,7 @@ function [dp_hot, Re_hot] = dp_hx_hot(mh, L, NoT,n_tube)
 
 global Dsh rho visc dnozzle di
 
-A_tubes = NoT*pi*(di^2)/4*1/n_tube; %divides by n_tube
+A_tubes = NoT*pi*(di^2)/(4*n_tube); %divides by n_tube
 A_shell = 0.25*pi*Dsh^2; 
 
 q = mh/rho; % volumetric flow rate
