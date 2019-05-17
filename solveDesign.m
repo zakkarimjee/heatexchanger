@@ -16,6 +16,7 @@ function [Q, Eff, valid, mass] = solveDesign(design)
     
     [valid, mass] = constraint(L,NoT,NoB,Y,a,n_shell,n_tube);
     Eff = 0;
+    Q = 0;
     
     if valid == 0
         return
