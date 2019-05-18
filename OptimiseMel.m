@@ -1,61 +1,69 @@
 clear 
 close all 
 
-L = linspace(0.2, 0.3, 10);
-NoT = 10;
-NoB = 20;
-Y = 0.014;
-a = 0.34;
-n_shell = 1;
-n_tube = 1;
+Lrange = linspace(0.15, 0.20, 5);
+NoTrange = 15:1:20;
+NoBrange = 17:1:25;
+Yrange = [0.01];
+arng = [0.2];
+n_shell_range = [1 2];
+n_tube_range = [2 4];
 
-Eff_L = zeros(1,length(L));
-    
-for i= 1:length(L)    
+% Lrange = linspace(0.15, 0.20, 5);
+% NoTrange = 12:2:16;
+% NoBrange = 15:2:20;
+% Yrange = [0.012 0.013 0.014];
+% arng = [0.2 0.34]
+% n_shell_range = [1 2];
+% n_tube_range = [1 2];
 
-    design = [L(i),NoT,NoB,Y,a,n_shell,n_tube];
-    Eff_L(1,i) = solveDesign(design);
-    
+Eff_L = [];
+i = 0;
+total = length(Lrange)*length(NoTrange)*length(NoBrange)*length(Yrange)*length(arng)*3;
+for a = arng
+for n_shell = n_shell_range;
+for n_tube = n_tube_range
+    for L = Lrange
+        for NoT = NoTrange
+            for NoB = NoBrange
+                for Y = Yrange
+            design = [L,NoT,NoB,Y,a,n_shell,n_tube];
+            [q, eff, val, mass] = solveDesign(design);
+                if val
+                    Eff_L = [Eff_L; design, q/1000, eff];
+                end
+                if mod(i,10) == 0
+                    disp([i total]);
+                end
+                i = i + 1;
+                end
+            end
+        end
+    end
+end
+end
 end
 
-[Eff_L_max, Ind] = max(Eff_L);
-Eff_L_max
-Corress_L = L(Ind)
+% Eff_L_max = max(Eff_L);
+[Max_Eff, ind] = max(Eff_L);
 
+OptimumEff = Eff_L(ind(end),:);
+OptimumQ = Eff_L(ind(end-1),:)
 
-Para = linspace(0.005,0.025,10);
-Eff_Para= zeros(1,length(Para));
+[TopQ, IndTop] = sort(Eff_L(:,end-1),'descend');
+OptimumQ5 = Eff_L(IndTop(1:5),:)
 
-for i= 1:length(Para)    
+xlswrite('Run1.xlsx',double(OptimumQ),'A3:I3')
 
-    design = [0.3,NoT,NoB,Para(i),a,n_shell,n_tube];
-    Eff_Para(1,i) = solveDesign(design);
-    
-end
+L_test = 0.175;
+NoT_test = 17;
+NoB_test = 11;
+Y_test = 0.01;
+a_test = 0.2;
+n_shell_test = 2;
+n_tube_test = 4;
 
-[Eff_Para_max, Ind] = max(Eff_Para);
-Eff_Para_max
-Corress_Para = Para(Ind)
-
-figure 
-hold on 
-plot(Eff_L)
-plot(Eff_Para)
-hold off 
-
-% Eff_NoT_L = zeros(length(L),length(NoT));
-% 
-% for i= 1:length(L)    
-%     for j = 1:length(NoT)
-% 
-%         design = [L(i),NoT(j),NoB,Y,a,n_shell,n_tube];
-%         Eff_L_NoT(i,j) = solveDesign(design);
-%         
-%     end
-% end
-% 
-% figure 
-% contour(NoT,L,Eff_L_NoT)
-
-
+design = [L_test,NoT_test,NoB_test,Y_test,a_test,n_shell_test,n_tube_test];
+[q, eff, val, mass] = solveDesign(design);
+q/1000
 
