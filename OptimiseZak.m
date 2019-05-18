@@ -3,7 +3,7 @@ close all
 
 Lrange = linspace(0.15, 0.20, 5);
 NoTrange = 15:1:20;
-NoBrange = 17:1:25;
+NoBrange = 15:1:25;
 Yrange = [0.01];
 arng = [0.2]
 n_shell_range = [1 2];
@@ -19,7 +19,7 @@ n_tube_range = [2 4];
 
 Eff_L = [];
 i = 0;
-total = length(Lrange)*length(NoTrange)*length(NoBrange)*length(Yrange)*length(arng)*3;
+total = length(Lrange)*length(NoTrange)*length(NoBrange)*length(Yrange)*length(arng)*length(n_shell_range)*length(n_tube_range);
 for a = arng
 for n_shell = n_shell_range;
 for n_tube = n_tube_range
