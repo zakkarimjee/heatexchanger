@@ -30,13 +30,17 @@ function [valid, m] = constraint(L,NoT,NoB,Y,a,n_shell,n_tube)
     %tube mass
     m = m + (L_tube+0.012)*d_tube;
     %baffle mass (Assume 0.8*pipe area, neglect tube hole area)
-    A_baff = 0.8*pi*(Dsh^2)*0.25;
+    A_baff = pi*(Dsh^2)*0.25 - NoT*0.25*pi*d0^2;
     m_baff = A_baff*d_baff;
     m = m + NoB*m_baff;
     %end plate mass (4 of them, neglecting tube hole area)
-    m = m + 4*A_plate*d_plate;
+    m = m + 4*A_plate*d_plate - 2*NoT*0.25*pi*d0^2;
+    %centre sheet mass
+    m = m + n_shell*Dsh*L*d_baff/2;
+    
     %nozzle masses
     m = m + 4*m_nozzle;
+    
 
     %% Length constraints
     %overall length - don't need to check pipe length as this is extra to
